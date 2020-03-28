@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap');
+
+body  {
+  padding: 15px;
+  margin: 0;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.logo {
+  width: 154px;
+  height: 50px;
+  display: block;
+  float: left;
+  margin: 0 30px;
+  background-image: url(logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.containerListeProds {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row ;
+}
+
+.boxProd {
+  text-align: center;
+}
+.boxProd img{
+  width: 85%;
+  transform: rotate(0deg) translateY(0);
+  transition: all  0.3s;
+}
+.boxProd:hover img{
+  width: 85%;
+  transform: rotate(10deg) translateY(-10px);
+}
+.nomProd {
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  float: left;
+  transform:translateY(0);
+  transition: all  0.3s;
+  transition-delay: 0ms;
+}
+.boxProd:hover .nomProd {
+  transform:translateY(-20px);
+}
+.priceProd {
+  text-align: center;
+  color: chocolate;
+  transform:translateY(0);
+  transition: all  0.3s;
+  transition-delay: 50ms;
+}
+.boxProd:hover .priceProd {
+  transform:translateY(-20px);
+}
+.colorDispo {
+  transform:translateY(0);
+  transition: all  0.3s;
+  transition-delay: 70ms;
+  opacity: 0;
+
+}
+.boxProd:hover .colorDispo {
+  transform:translateY(-20px);
+  opacity: 1;
+}
+.bttAjoutPanier {
+  transform:translateY(0);
+  transition: all  0.3s;
+  transition-delay: 100ms;
+  opacity: 0;
+}
+.boxProd:hover .bttAjoutPanier {
+  transform:translateY(-20px);
+  opacity: 1;
+}
+
+.contColor {
+  text-align: center;
+}
+.black {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #000;
+  margin: 2px;
+  display: inline-table;
+  cursor: pointer;
+}
+.red {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color:red;
+  margin: 2px;
+  display: inline-table;
+  cursor: pointer;
+}
+.green {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color:green;
+  margin: 2px;
+  display: inline-table;
+  cursor: pointer;
+}
+
+.boxProd {
+  border: 1px #e5e5e5 solid;
+  border-radius: 7px;
+  margin:10px 5px;
+  padding: 5px;
+
+}
+
+.bttAjoutPanier {
+  border: 1px #eee solid;
+  background-color: #fff;
+  color: #333;
+  border-radius: 7px;
+  padding:5px 10px;
+  font-size: 13px;
+}
+.bttAjoutPanier:hover {
+  background-color:#333;
+  color: #fff;
+}
+.col-3 {
+  -ms-flex: 0 0 24% !important;
+  flex: 0 0 24% !important;
+  max-width: 24% !important;
+}
+.contMenu {
+  height: 60px;
+  margin-bottom: 25px;
+  border-bottom: 1px #eee solid;
+}
+.menuHaut a{
+  float: right;
+  display: block;
+  margin: 15px 15px;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+}
+.menuHaut a:before{
+  content: "";
+  width: 0px;
+  height: 2px;
+  background-color:#333;
+  bottom: -10px;
+  left: 0;
+  position: absolute;
+  transition: all 0.3s;
+}
+.menuHaut a:hover:before{
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  bottom: -10px;
+  left: 0;
+  position: absolute;
+}
+.menuHaut a:hover{
+  color: #333;
+  text-decoration: none;
+}
+.menuHaut .panier{
+  float: right;
+  display: block;
+  margin: 15px 15px 15px 30px;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+}
+.menuHaut .panier:before{
+  width: 32px;
+  height: 34px;
+  background-image: url(panier.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  content: "";
+  top: 2px;
+  left: -25px;
+  background-size: 56%;
+}
+
+.contfooter {
+  height: 80px;
+  margin-top: 25px;
+  border-top: 1px #eee solid;
+}
+.contfooter .logo {
+  width: 74px;
+  height: 30px;
+  display: block;
+  float: left;
+  margin: 28px 30px;
+  background-image:url(logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.contfooter .copyright {
+  font-size: 12px;
+  text-transform: uppercase;
+  padding-top: 35px;
+
+}
+
+.titreBlockHome {
+  font-size: 22px;
+  text-transform: uppercase;
+  padding: 20px 0px;
+  width: 100%;
+  display: block;
+}
+
+.contentLoading{
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.textLoading {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 184px;
+}
