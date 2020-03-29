@@ -11,14 +11,14 @@ class App extends Component {
   };
 
   getTotalPanier = (tpanier, Panier) => {
+    console.log('tpanier',tpanier)
     this.setState({totalPanierGlobal: tpanier, Panier: Panier });
 
   }
   render() {
     const totalPanierGlobal = this.state.totalPanierGlobal
     console.log(totalPanierGlobal);
-    const Panier = this.state.Panier;
-    //console.log(Panier);
+    console.log(this.state.Panier);
     return (
       
       <div className="App">
@@ -33,7 +33,7 @@ class App extends Component {
         
         <div className="ppanier" id="pan"></div>
         <PanierBlock Panier={this.state.Panier}/>
-        <ListeProds GettotalPanierGlobal={this.getTotalPanier}/>
+        <ListeProds getTotalPanier={this.getTotalPanier}/>
         <div className="container-fluid contfooter">
           <div className="container">
             <a href="#" className="logo"></a>

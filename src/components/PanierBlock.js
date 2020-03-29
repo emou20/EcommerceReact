@@ -2,61 +2,35 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class PanierBlock extends Component {
-    state = {
+  constructor(props){
+    super(props)
+    this.state = {
         ListeprodG: [],
+        ListProsExist:[]
       };
-      getProdPanier() {
-        axios
-          // This is where the data is hosted
-          .get("https://api.myjson.com/bins/itesk")
-          // Once we get a response and store data, let's change the loading state
-          .then(response => {
-            this.setState({
-                ListeprodG: response.data,
-            });
-          })
-         
-      }
-      componentDidMount() {
-        this.getProdPanier();
-      }
-    render() {
-        
-        const ProdPanierRef= this.props.Panier;
-        const ListeprodG = this.state.ListeprodG;
-        let nomprod ="";
-        let refprodd ="";
-        //console.log(ProdPanierRef);
-        //console.log(ListeprodG);
-        return (
-            <div>
-               
-               { 
-               
-               
-               ListeprodG.map((prod, index) => {
-                 
-                 
-                  ProdPanierRef.forEach(refProd => { 
-
-                        if (refProd===prod.ref){
-                            
-                            console.log(prod.ref);
-                            console.log(prod.nomProduit);
-                            return <div> aaaaa</div>
-                            
-                        }
-
-                }); 
-
-                    
-                })
+  }
+  componentWillReceiveProps(nextProps){
+    const {Panier}=nextProps;
+    console.log('Panier',Panier)
+    this.state.ListProsExist=[]
+      Panier.map(prod =>{
+         (this.state.ListProsExist.push(prod))
+      });
+      console.log('ListProsExist', this.state.ListProsExist);        
+  }
+  render() {
+      return (
+          <div style={{backgroundColor:'red'}}>
+            {
+              this.state.ListProsExist.map((prod)=>(
+                <div>
+                  <h1>{prod.nomProduit}</h1>
+                  <h1>#{prod.ref}</h1>
+                </div>
+              ))
             }
-
-
-
-            </div>
-        )
-    }
+          </div>
+      )
+  }
 }
 

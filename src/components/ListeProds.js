@@ -29,9 +29,10 @@ export default class ListeProds extends Component {
         this.getPosts();
       }
       
-      addprodspanier= ev => {          
-        const TPanier = tabPanier.push(ev.currentTarget.value);
-        this.props.GettotalPanierGlobal(TPanier, tabPanier);
+      addprodspanier= prod=> ev => {   
+        console.log(prod)       
+        const TPanier = tabPanier.push(prod);
+        this.props.getTotalPanier(TPanier, tabPanier);
       };
       
 
@@ -61,7 +62,7 @@ export default class ListeProds extends Component {
                     <div className="colorDispo">
                         <ColorDispo prods={prod} />
                     </div>
-                    <button className="bttAjoutPanier" value={prod.ref} onClick={this.addprodspanier}>Ajouter au panier</button>
+                    <button className="bttAjoutPanier" value={prod.ref} onClick={this.addprodspanier(prod)}>Ajouter au panier</button>
 
                    
 
