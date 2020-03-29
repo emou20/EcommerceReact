@@ -6,9 +6,9 @@ body  {
   font-family: 'Julius Sans One', sans-serif;
 }
 
-#App {
+.App {
   overflow: hidden;
-    position: relative;
+  position: relative;
 }
 
 .logo {
