@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ColorDispo from './ColorDispo';
-import { Spinner } from 'reactstrap';
+import ColorDispo from './ColorDispo';;
 
 const tabPanier = [];
 export default class ListeProds extends Component {
@@ -29,8 +28,7 @@ export default class ListeProds extends Component {
         this.getPosts();
       }
       
-      addprodspanier= prod=> ev => {   
-        console.log(prod)       
+      addprodspanier= prod=> ev => {      
         const TPanier = tabPanier.push(prod);
         this.props.getTotalPanier(TPanier, tabPanier);
       };
@@ -39,7 +37,6 @@ export default class ListeProds extends Component {
     render() {
         const Prods = this.state.Prods;
         const loading = this.state.loading;
-        console.log(loading);
         if (loading){
           return (
             <div className="contentLoading">

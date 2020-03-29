@@ -1,31 +1,63 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { Button } from 'reactstrap';
 
 export default class PanierBlock extends Component {
   constructor(props){
     super(props)
     this.state = {
         ListeprodG: [],
-        ListProsExist:[]
+        ListProsExist:[],
+        opened:true,
+
       };
   }
   componentWillReceiveProps(nextProps){
     const {Panier}=nextProps;
-    console.log('Panier',Panier)
     this.state.ListProsExist=[]
       Panier.map(prod =>{
          (this.state.ListProsExist.push(prod))
       });
-      console.log('ListProsExist', this.state.ListProsExist);        
+      
+      this.setState({
+        opened: this.props.isOpened,
+      });
   }
+
+
+  closePan= () => {
+    this.setState({
+			opened: false,
+    });
+  }
+ 
   render() {
+    let classOpen = 'panierFloat';
+    const isOpened = this.props.isOpened;
+    const opened  = this.state.opened;
+    console.log(isOpened);
+    console.log(opened);
+    if (isOpened){
+			classOpen = 'panierFloat animOpen';
+    }
+    
+    if(!opened){
+			classOpen = 'panierFloat animClose';
+    }
+    
+
       return (
-          <div>
+          <div className={classOpen} id="panierFloat">
+            <Button close onClick={this.closePan} />
+            <div className="titrepanier">Votre panier : </div>
             {
               this.state.ListProsExist.map((prod)=>(
                 <div>
-                  <h1>{prod.nomProduit}</h1>
-                  <h1>#{prod.ref}</h1>
+                  <div className="lignePanier">
+                  <div className="contite">1</div>
+                  <div className="photoProd"><img src={prod.photo} /></div>
+                  <div className="nomProd">{prod.nomProduit}</div>
+                  <div className="prixProd">{prod.prix} DT</div>
+                  </div>
                 </div>
               ))
             }

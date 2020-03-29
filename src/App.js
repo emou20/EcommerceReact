@@ -8,17 +8,24 @@ class App extends Component {
   state = {
     totalPanierGlobal: 0,
     Panier: [],
+    siouvert:false,
   };
 
   getTotalPanier = (tpanier, Panier) => {
-    console.log('tpanier',tpanier)
     this.setState({totalPanierGlobal: tpanier, Panier: Panier });
 
   }
+
+
+  openPanier= () => {
+    
+      this.setState({
+        siouvert: true,
+      });
+        
+  }
   render() {
     const totalPanierGlobal = this.state.totalPanierGlobal
-    console.log(totalPanierGlobal);
-    console.log(this.state.Panier);
     return (
       
       <div className="App">
@@ -26,13 +33,13 @@ class App extends Component {
         <div className="container-fluid contMenu">
         <a href="#" className="logo"></a>
         <div className="menuHaut">
-          <div className="panier">{totalPanierGlobal} Produits</div><a href="#">HOMME</a><a href="#">FEMME</a><a href="#">ENFANT</a>
+          <div className="panier" onClick={this.openPanier}>{totalPanierGlobal} Produits</div><a href="#">HOMME</a><a href="#">FEMME</a><a href="#">ENFANT</a>
         </div>
         </div>
         
         
         <div className="ppanier" id="pan"></div>
-        <PanierBlock Panier={this.state.Panier}/>
+        <PanierBlock Panier={this.state.Panier} isOpened={this.state.siouvert}/>
         <ListeProds getTotalPanier={this.getTotalPanier}/>
         <div className="container-fluid contfooter">
           <div className="container">
