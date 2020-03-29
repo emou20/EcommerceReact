@@ -244,7 +244,7 @@ body  {
 
 .panierFloat {
   width: 600px;
-  height: auto;
+  height: 100vh;
   border: 1px #eee solid;
   display: block;
   overflow: hidden;
