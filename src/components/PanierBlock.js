@@ -20,7 +20,7 @@ export default class PanierBlock extends Component {
   }
   render() {
       return (
-          <div style={{backgroundColor:'red'}}>
+          <div>
             {
               this.state.ListProsExist.map((prod)=>(
                 <div>
