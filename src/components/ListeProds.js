@@ -30,6 +30,7 @@ export default class ListeProds extends Component {
       
       addprodspanier= prod=> ev => {      
         const TPanier = tabPanier.push(prod);
+        
         this.props.getTotalPanier(TPanier, tabPanier);
       };
       

@@ -26,6 +26,7 @@ class App extends Component {
   }
   render() {
     const totalPanierGlobal = this.state.totalPanierGlobal
+    const siouvert = this.state
     return (
       
       <div className="App">
