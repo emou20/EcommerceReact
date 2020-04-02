@@ -27,11 +27,19 @@ export default class ListeProds extends Component {
       componentDidMount() {
         this.getPosts();
       }
+      componentWillReceiveProps(nextProps){
+        tabPanier = nextProps.sendpanierDeletListe
+        console.log("modif tabPanier",tabPanier)
+      }
       
-      addprodspanier= prod=> ev => {      
-        const TPanier = tabPanier.push(prod);
+      addprodspanier= prod=> ev => { 
+        
+        let qnt = 1;
+        
+        const TPanier = tabPanier.push({quantite:qnt,refProd:prod.ref, photo: prod.photo,nomProduit: prod.nomProduit,prix: prod.prix});
         
         this.props.getTotalPanier(TPanier, tabPanier);
+        console.log("tabpanier",tabPanier)
       };
       
 

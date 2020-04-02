@@ -11,11 +11,24 @@ class App extends Component {
     siouvert:false,
   };
 
+
+
+
   getTotalPanier = (tpanier, Panier) => {
     this.setState({totalPanierGlobal: tpanier, Panier: Panier });
 
   }
 
+
+  sendpanierDelet = panierAfterDelet => {
+    console.log("panierAfterDelet",panierAfterDelet)
+    const ancienTotalPanier = this.state.totalPanierGlobal;
+    const nvTotalPanier = ancienTotalPanier - 1;
+    this.setState({Panier: panierAfterDelet,totalPanierGlobal: nvTotalPanier });
+    
+    
+
+  }
 
   openPanier= () => {
     
@@ -25,8 +38,8 @@ class App extends Component {
         
   }
   render() {
+    console.log("Panier apres",this.state.Panier)
     const totalPanierGlobal = this.state.totalPanierGlobal
-    const siouvert = this.state
     return (
       
       <div className="App">
@@ -40,8 +53,8 @@ class App extends Component {
         
         
         <div className="ppanier" id="pan"></div>
-        <PanierBlock Panier={this.state.Panier} isOpened={this.state.siouvert}/>
-        <ListeProds getTotalPanier={this.getTotalPanier}/>
+        <PanierBlock Panier={this.state.Panier} isOpened={this.state.siouvert} sendpanierDelet={this.sendpanierDelet}/>
+        <ListeProds getTotalPanier={this.getTotalPanier}  sendpanierDeletListe={this.state.Panier}/>
         <div className="container-fluid contfooter">
           <div className="container">
             <a href="#" className="logo"></a>

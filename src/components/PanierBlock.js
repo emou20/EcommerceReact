@@ -8,21 +8,27 @@ export default class PanierBlock extends Component {
         ListeprodG: [],
         ListProsExist:[],
         opened:true,
-        quantiteProdPanier:0,
 
       };
   }
+
+
+
   componentWillReceiveProps(nextProps, openedProps){
     const {Panier}=nextProps;
     this.state.ListProsExist=[]
-      Panier.map(prod =>{
-         (this.state.ListProsExist.push(prod))
-      });
-      
+    const tabTemp = []
+     Panier.map(prod =>{
+     // ajout dans le panier
+      (tabTemp.push(prod))
+      this.setState({
+        ListProsExist: tabTemp
+      })   
+    });            
       const issopened = openedProps
       this.setState({
         opened: issopened,
-      });
+      });   
   }
 
 
@@ -31,12 +37,31 @@ export default class PanierBlock extends Component {
 			opened: false,
     });
   }
+  
+
+  deletProd = Prod=>  ev => {
+      this.state.ListProsExist.forEach((emp, index)=>{
+        if(emp.refProd===Prod.refProd){
+          this.state.ListProsExist.splice(index, 1);
+          this.setState({
+            ListProsExist:this.state.ListProsExist
+          })
+        } 
+
+        this.props.sendpanierDelet(this.state.ListProsExist);
+  });     
+  
+
+  
+
+    
+  }
+  
  
   render() {
     let classOpen = 'panierFloat';
     const isOpened = this.props.isOpened;
     const opened  = this.state.opened;
-
     if (isOpened){
 			classOpen = 'panierFloat animOpen';
     }
@@ -47,7 +72,9 @@ export default class PanierBlock extends Component {
     
     let idclass = "idclass";
     let totalePanier = 0;
-    let quantite = 1;
+
+   
+
       return (
           <div className={classOpen} id="panierFloat">
             <Button close onClick={this.closePan} />
@@ -56,13 +83,19 @@ export default class PanierBlock extends Component {
               this.state.ListProsExist.map((prod, index)=>(
                 totalePanier = totalePanier + prod.prix,
                 idclass = idclass+index,
+               
 
                 <div key={index}>
                   <div className="lignePanier" id={idclass}>
-                    <div className="contite">{quantite}</div>
+                    <div className="contite">{prod.quantite}</div>
                     <div className="photoProd"><img src={prod.photo} /></div>
                     <div className="nomProd">{prod.nomProduit}</div>
                     <div className="prixProd">{prod.prix} DT</div>
+                    <div className="deletProd">
+                      <Button close aria-label="Cancel" onClick={this.deletProd(prod)}>
+                        <span aria-hidden>&ndash;</span>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ))
@@ -74,6 +107,9 @@ export default class PanierBlock extends Component {
             </div>
           </div>
       )
+
+      
   }
+
 }
 

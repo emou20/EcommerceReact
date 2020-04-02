@@ -261,6 +261,11 @@ z-index: 1;
 
     transition: all 0.5s ;
 }
+.titrepanier {
+  width: 100%;
+  padding: 15px 0px;
+  text-transform: uppercase;
+}
 .panierFloat .lignePanier {
   width: 100%;
   border: 1px #eee solid;
@@ -276,7 +281,7 @@ z-index: 1;
 }
 
 .panierFloat .lignePanier .contite{
-  width: 10%;
+  width: 8%;
   float: left;
   padding: 20px 5px;
   text-align: center;
@@ -287,7 +292,7 @@ z-index: 1;
   text-align: center;
 }
 .panierFloat .lignePanier .nomProd{
-  width: 55%;
+  width: 50%;
   float: left;
   padding: 20px 5px;
   text-align: left;
@@ -295,8 +300,19 @@ z-index: 1;
 }
 .panierFloat .lignePanier .prixProd{
   width: 15%;
-  float: right;
+  float: left;
   padding: 20px 5px;
+}
+.panierFloat .lignePanier .deletProd{
+  width: 7%;
+  float: right;
+  padding: 20px 0px;
+  text-align: center;
+}
+.panierFloat .lignePanier .deletProd button{
+  margin: 0 auto;
+  float: none;
+  color: red;
 }
 
 .panierFloat .lignePanier .photoProd img{
