@@ -13,15 +13,16 @@ class App extends Component {
 
 
 
-
+  // ajout panier dans panier globale app
   getTotalPanier = (tpanier, Panier) => {
+    
     this.setState({totalPanierGlobal: tpanier, Panier: Panier });
 
   }
 
 
+  //mise a jour panier apres suppression app
   sendpanierDelet = panierAfterDelet => {
-    console.log("panierAfterDelet",panierAfterDelet)
     const ancienTotalPanier = this.state.totalPanierGlobal;
     const nvTotalPanier = ancienTotalPanier - 1;
     this.setState({Panier: panierAfterDelet,totalPanierGlobal: nvTotalPanier });
@@ -30,6 +31,7 @@ class App extends Component {
 
   }
 
+  //overture layout panier 
   openPanier= () => {
     
       this.setState({

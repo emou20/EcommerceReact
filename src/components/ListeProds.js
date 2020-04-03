@@ -27,23 +27,48 @@ export default class ListeProds extends Component {
       componentDidMount() {
         this.getPosts();
       }
+
+      
+
+      //ajout produit dans le panier
+      addprodspanier= prod=> ev => { 
+        console.log("tabPanier avant ajout", tabPanier)
+        let prodexist = false;
+        let indexProdExiste = 0;
+        if (tabPanier.length >= 0){
+          for (let i=0; i<tabPanier.length; i++){
+            if(tabPanier[i].refProd===prod.ref){
+              prodexist = true;
+              indexProdExiste = i;
+            }else{
+              prodexist = false;
+            }
+          }
+        }
+
+        if(prodexist){
+          console.log("index avant", tabPanier[indexProdExiste].quantite)
+          tabPanier[indexProdExiste].quantite = tabPanier[indexProdExiste].quantite + 1;
+          const TTPanier = tabPanier.length
+          const TPanier = TTPanier + 1;
+          this.props.getTotalPanier(TPanier, tabPanier);
+          console.log("index apres", tabPanier[indexProdExiste].quantite)
+        }else{
+          const TPanier = tabPanier.push({quantite:1,refProd:prod.ref, photo: prod.photo,nomProduit: prod.nomProduit,prix: prod.prix});
+          this.props.getTotalPanier(TPanier, tabPanier);
+        }
+
+      };
+
+      //mise a jour panier apres suppression
       componentWillReceiveProps(nextProps){
         tabPanier = nextProps.sendpanierDeletListe
-        console.log("modif tabPanier",tabPanier)
       }
       
-      addprodspanier= prod=> ev => { 
-        
-        let qnt = 1;
-        
-        const TPanier = tabPanier.push({quantite:qnt,refProd:prod.ref, photo: prod.photo,nomProduit: prod.nomProduit,prix: prod.prix});
-        
-        this.props.getTotalPanier(TPanier, tabPanier);
-        console.log("tabpanier",tabPanier)
-      };
       
 
     render() {
+      console.log("tabpanier apres ajout",tabPanier)
         const Prods = this.state.Prods;
         const loading = this.state.loading;
         if (loading){

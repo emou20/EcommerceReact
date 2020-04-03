@@ -31,14 +31,14 @@ export default class PanierBlock extends Component {
       });   
   }
 
-
+//fermeture layout panier
   closePan= () => {
     this.setState({
 			opened: false,
     });
   }
   
-
+//suppression panier
   deletProd = Prod=>  ev => {
       this.state.ListProsExist.forEach((emp, index)=>{
         if(emp.refProd===Prod.refProd){
@@ -81,7 +81,7 @@ export default class PanierBlock extends Component {
             <div className="titrepanier">Votre panier : </div>
             {
               this.state.ListProsExist.map((prod, index)=>(
-                totalePanier = totalePanier + prod.prix,
+                totalePanier = totalePanier + (prod.prix * prod.quantite) ,
                 idclass = idclass+index,
                
 
